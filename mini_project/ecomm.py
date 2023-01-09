@@ -18,6 +18,13 @@ def get_products(soup):
         st.success(f'Found {len(items)} items')
         return items
 
+def get_product(soup):
+    target = soup.find('div', class_ = '_1YokD2 _3Mn1Gg')
+    if target is not None:
+        items = target.find_all('div', class_ = '_1AtVbE col-12-12')
+        st.success(f'Found {len(items)} items')
+        return items
+
 def extract_one(item):
     data = {}
     title = item.find('div',class_ ='_4rR01T')
@@ -25,6 +32,7 @@ def extract_one(item):
     orig_price = item.find('div', class_='_3I9_wc _27UcVY')
     rating = item.find('div', class_='_3LWZlK')
     num_ratings = item.find('span', class_='_2_R_DZ')
+    
     if title:
         data['title'] = title.text.strip()
     if sell_price:
@@ -35,6 +43,29 @@ def extract_one(item):
         data['rating'] = rating.text.strip()
     if num_ratings:
         data['num_ratings'] = num_ratings.text.strip()
+    return data
+
+def extract_two(item):
+    data = {}
+    brand = item.find('div', class_= '_2WkVRV')
+    title = item.find('a',class_ ='IRpwTa _2-ICcC')
+    sell_price = item.find('div', class_='_30jeq3')
+    orig_price = item.find('div', class_='_3I9_wc')
+    dis = item.find('div', class_='_3Ay6Sb')
+    left = item.find('div', class_='_2ZdXDB')
+    
+    if brand:
+        data['Brand'] = brand.text.strip()
+    if title:
+        data['title'] = title.text.strip()
+    if sell_price:
+        data['sell_price'] = sell_price.text.strip()
+    if orig_price:
+        data['orig_price'] = orig_price.text.strip()
+    if dis:
+        data['discount'] = dis.text.strip()
+    if left:
+        data['items_left'] = left.text.strip()
     return data
 
 def main(query = 'tv'):
@@ -53,6 +84,7 @@ def main(query = 'tv'):
             break
         for item in items:
             data = extract_one(item)
+            data = extract_two(item)
             all_products.append(data)
         pos += 1
     if len(all_products) > 0:
