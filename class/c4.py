@@ -1,6 +1,9 @@
 from c3 import Calculator
 from math import log
 
+# syntax for inheritance
+# class Child(Parent)
+
 class SciCal(Calculator):
     
     def log(self):
