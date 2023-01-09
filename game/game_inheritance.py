@@ -44,7 +44,7 @@ p = Player('ironman')
   
 def draw():
     screen.fill('black')
-    # screen.blit('', (0,0)) # add background image
+    screen.blit('bg', (0,0)) # add background image
     p.draw()
     
 def update():
