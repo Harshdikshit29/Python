@@ -1,3 +1,5 @@
+from pprint import pp
+
 movies = {}
 movies['Top Gun: Maverick'] = 8.3
 movies['EEAO'] = 8.1

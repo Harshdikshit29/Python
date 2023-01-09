@@ -24,3 +24,7 @@ print(val_dict['experience'])
 # adding a data inside dict
 val_dict['company'] = 'Acme.inc'
 print(val_dict)
+
+from pprint import pp
+
+pp(val_dict)
