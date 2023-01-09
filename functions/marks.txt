@@ -1,0 +1,6 @@
+rajesh:200
+brijesh:120
+raj:130
+ajay:150
+suraj:90
+chand:120
