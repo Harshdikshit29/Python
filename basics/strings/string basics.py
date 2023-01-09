@@ -39,11 +39,11 @@ print(name[1::2])
 x = chr(65)
 print(x)
 
-# x = chr(2365)
-# print(x)
+x = chr(2365)
+print(x)
 
-# for i in range(15000,20000):
-#     print(i,chr(i))
+for i in range(15000,20000):
+    print(i,chr(i))
 
 #convert char to integer
 y = ord('A')
